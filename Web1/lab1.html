@@ -3,70 +3,61 @@
   <head>
     <meta charset="utf-8">
     <title>мяу мяу</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="input.css">
-    <link rel="stylesheet" href="area.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/area.css">
+    <script src="validator.js" defer></script>
   </head>
 
   
   <body>
     <table class="maintable" cellpadding="10" cellspacing="0" width="100%">
       <tr class="graphics">
-        <td class="boxheaderl" colspan="1">Вариант 1222</td>
-        <td class="boxheaderl" colspan="1"></td>
+        <td class="boxheaderl" colspan="2">Вариант 1222</td>
         <td class="boxheaderr" colspan="1">Сухарева Софья, Р32131</td>
       </tr>
       <tr>
-        <td class="area"> 
-          <!--area here-->
+        <td rowspan="4" align="center"> 
+          <img src="images/areas.png" alt="The graph">
         </td>
         <td class="area"> 
           <!--area here-->
         </td>
         <td>
+          Изменение X:
           <div class="X-text" id="X">
               <table class="x-select" id="x-select">
                 <tr>
                   <td>
-                    <input type="button" id="a-4" name="x" value="-4"/>
-                  <label for="a-4"></label>
+                    <button class="x-button" type="button" id="a-4" name="x" value="-4">-4</button>
                   </td>
                   <td>
-                    <input type="button" id="a-3" name="x" value="-3"/>
-                  <label for="a-3"></label>
+                    <button class="x-button" type="button" id="a-3" name="x" value="-3">-3</button>
                   </td>
                   <td>
-                    <input type="button" id="a-2" name="x" value="-2"/>
-                  <label for="a-2"></label>
+                    <button class="x-button" type="button" id="a-2" name="x" value="-2">-2</button>
                   </td>                                    
                 </tr>
                 <tr>
                   <td>
-                    <input type="button" id="a-1" name="x" value="-1"/>
-                  <label for="a-1"></label>
+                    <button class="x-button" type="button" id="a-1" name="x" value="-1">-1</button>
                   </td>
                   <td>
-                    <input type="button" id="a0" name="x" value="0"/>
-                  <label for="a0"></label>
+                    <button class="x-button" type="button" id="a0" name="x" value="0">0</button>
                   </td>
                   <td>
-                    <input type="button" id="a1" name="x" value="1"/>
-                  <label for="a1"></label>     
+                    <button class="x-button" type="button" id="a1" name="x" value="1">1</button>
                   </td>
                 </tr>  
                 <tr>
                   <td>
-                    <input type="button" id="a2" name="x" value="2"/>
-                  <label for="a2"></label>
+                    <button class="x-button" type="button" id="a2" name="x" value="2">2</button>
                   </td>
                   <td>
-                    <input type="button" id="a3" name="x" value="3"/>
-                  <label for="a3"></label>
+                    <button class="x-button" type="button" id="a3" name="x" value="3">3</button>
                   </td>
                   <td>
-                    <input type="button" id="a4" name="x" value="4"/>
-                  <label for="a4"></label>
+                    <button class="x-button" type="button" id="a4" name="x" value="4">4</button>
                   </td>
                 </tr>
               </table>  
@@ -77,36 +68,29 @@
         <td class="area"> 
           <!--area here-->
         </td>
-        <td class="area"> 
-          <!--area here-->
-        </td>
-        <td class="inputy">Изменение Y:
-          <!-- text -->
-          <form id="yin" action="handler.php" method="get"></form>
-          <input type="text" name="site" required></p>
-          <input type="submit" form="yin">
+        <td>Изменение Y:
+          <div class="Y-text" id="Y">
+            <input id="input-y" placeholder="(-3; 5)">
+          </div>
         </td>
       </tr>
       <tr>
         <td class="area"> 
           <!--area here-->
         </td>
-        <td class="area"> 
-          <!--area here-->
-        </td>
-        <td class="inputz">Изменение Z:
+        <td class="inputz">Изменение R:
           <!-- checkbox -->
           <form action="/action_page.php">
-            <input type="checkbox" id="z1" name="z1" value="1">
-            <label for="z1"> 1</label><br>
-            <input type="checkbox" id="z15" name="z15" value="1.5">
-            <label for="z15"> 1.5 </label><br>
-            <input type="checkbox" id="z2" name="z2" value="2">
-            <label for="z2"> 2</label><br>
-            <input type="checkbox" id="z25" name="z25" value="2.5">
-            <label for="z25"> 2.5</label><br>
-            <input type="checkbox" id="z3" name="z3" value="3">
-            <label for="z3"> 3</label><br>
+            <input type="checkbox" id="r1" name="r1" value="1">
+            <label for="r1"> 1</label><br>
+            <input type="checkbox" id="r15" name="r15" value="1.5">
+            <label for="r15"> 1.5 </label><br>
+            <input type="checkbox" id="r2" name="r2" value="2">
+            <label for="r2"> 2</label><br>
+            <input type="checkbox" id="r25" name="r25" value="2.5">
+            <label for="r25"> 2.5</label><br>
+            <input type="checkbox" id="r3" name="r3" value="3">
+            <label for="r3"> 3</label><br>
           </form> 
 
         </td>
@@ -116,27 +100,28 @@
         <td class="area">
           <!--area here-->
         </td>
-        <td class="area">
-          <!--area here-->
-        </td>
         <td>
-          <button id="submit-button" type="submit">Отправить</button>
-        <button id="clear-button" type="reset">Очистить таблицу</button>
+          <button id="submit-button">Отправить</button>
         </td>
       </tr>
       <tr>
-        <td colspan="3">
-          <table id="check" class="table-check">
+        <td colspan="2">
+          <table id="check" class="table-check" align="center">
             <tr class="table-header">
-              <th scope="col">R</th>
               <th scope="col">X</th>
               <th scope="col">Y</th>
+              <th scope="col">R</th>
               <th scope="col">Результат</th>
             </tr>
           </table>
         </td>
+        <td>
+          <div class="time_info">
+              <span>Текущее время: <span id="current_time"></span></span> <br>
+              <span>Время работы скрипта: <span id="working_time"></span></span> <br>
+          </div>
+        </td>
       </tr>
     </table>
-    <script type="text/javascript" src="js/jquery.js"></script>
   </body>
 </html>
