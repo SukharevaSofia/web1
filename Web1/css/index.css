@@ -1,8 +1,45 @@
+* {
+    font-family: sans-serif;   
+}
+
 body{
     background-color: rgb(249, 234, 225)
 }
 
 .active_btn {
-    color: rgb(3, 18, 14);
-    background-color: rgb(98, 148, 96);
+    color: rgb(249, 234, 225);
+    background-color: #7d5b5c;
+}
+
+table.table_check   {
+    width: 100%;
+    font-size:large;
+    background-color:#7d5b5c;
+
+    color: rgb(255, 255, 255);
+}
+
+td.boxheaderr { /* вариант, фио и прочее */ 
+
+    text-align:right;
+    font-family: sans-serif;
+    font-style: italic;
+    font-size:larger;
+
+    background-color: rgb(101, 50, 57);
+    color: rgb(255, 255, 255);
+   }
+td.boxheaderl {     
+
+    text-align:left;
+    font-family: sans-serif;
+    font-style: italic;
+    font-size:larger;
+
+    background-color: rgb(101, 50, 57);
+    color: rgb(255, 255, 255);
+   }
+
+td.area{
+    width: 1%;
 }
