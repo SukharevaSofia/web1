@@ -42,6 +42,10 @@ function checkX() {
 
 
 function checkY() {
+    if (String(y_value.replace('-', '')).length > 5){
+        error_message = "Введите число Y с точностью до 3 знака после запятой";
+        return false;
+    }
     const value_string = y_value.replace('\,', '.');
     if (!isNaN(value_string)) {
         const value = Number.parseFloat(value_string);
@@ -52,7 +56,7 @@ function checkY() {
         else return true;
     }
     else {
-        erorr_message = "Y не число, кого вы обмануть пытаетесь?";
+        error_message = "Y не число :(";
         return false;
     }
 }
