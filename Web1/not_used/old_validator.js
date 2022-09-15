@@ -194,7 +194,7 @@ submitButton.addEventListener('click', sendData);
 
 /*------------Определение выбранной кнопки-----------*/
 
-const btns = document.querySelectorAll('button[id^=x]')
+const btns = document.querySelectorAll('button[id^=a]')
 
 btns.forEach(btn => {
 
