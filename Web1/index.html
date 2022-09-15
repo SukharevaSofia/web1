@@ -3,128 +3,127 @@
   <head>
     <meta charset="utf-8">
     <title>мяу мяу</title>
-    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/area.css">
     <link rel="icon" href="img/icon.png">
     <script src="validator.js" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
 
   
   <body>
-    <table class="maintable" cellpadding="10" cellspacing="0" width="100%">
-      <tr class="graphics">
-        <td class="boxheaderl" colspan="2">Вариант 1222</td>
-        <td class="boxheaderr" colspan="1">Сухарева Софья, Р32131</td>
-      </tr>
-      <tr>
-        <td rowspan="4" align="center"> 
-          <img src="images/areas3.png" alt="The graph">
-        </td>
-        <td class="area"> 
-          <!--area here-->
-        </td>
-        <td>
-          <form action="" method="get">
-            Изменение X:
-            <div class="X-text" id="X">
-                <table class="x-select" id="x-select">
-                  <tr>
-                    <td>
-                      <input class="x-button" type="button" id="x-4" name="x" value="-4"></input>
-                    </td>
-                    <td>
-                      <input class="x-button" type="button" id="x-3" name="x" value="-3"></input>
-                    </td>
-                    <td>
-                      <input class="x-button" type="button" id="x-2" name="x" value="-2"></input>
-                    </td>                                    
-                  </tr>
-                  <tr>
-                    <td>
-                      <input class="x-button" type="button" id="x-1" name="x" value="-1"></input>
-                    </td>
-                    <td>
-                      <input class="x-button" type="button" id="x0" name="x" value="0"></input>
-                    </td>
-                    <td>
-                      <input class="x-button" type="button" id="x1" name="x" value="1"></input>
-                    </td>
-                  </tr>  
-                  <tr>
-                    <td>
-                      <input   class="x-button" type="button" id="x2" name="x" value="2"></input>
-                    </td>
-                    <td>
-                      <input class="x-button" type="button" id="x3" name="x" value="3"></input>
-                    </td>
-                    <td>
-                      <input class="x-button" type="button" id="x4" name="x" value="4"></input>
-                    </td>
-                  </tr>
-                </table>
-              </form>  
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="area"> 
-          <!--area here-->
-        </td>
-        <td>Изменение Y:
-          <div class="Y-text" id="Y">
-            <input id="input-y" placeholder="(-3; 5)">
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="area"> 
-          <!--area here-->
-        </td>
-        <td class="inputz">Изменение R:
-          <!-- checkbox -->
-          <form action="/action_page.php">
-            <input type="checkbox" id="r1" name="r1" value="1">
-            <label for="r1"> 1</label><br>
-            <input type="checkbox" id="r15" name="r15" value="1.5">
-            <label for="r15"> 1.5 </label><br>
-            <input type="checkbox" id="r2" name="r2" value="2">
-            <label for="r2"> 2</label><br>
-            <input type="checkbox" id="r25" name="r25" value="2.5">
-            <label for="r25"> 2.5</label><br>
-            <input type="checkbox" id="r3" name="r3" value="3">
-            <label for="r3"> 3</label><br>
-          </form> 
+		<form action="" method="get" id="form">
+			<table class="maintable" cellpadding="10" cellspacing="0" width="100%">
+				<tr class="graphics">
+					<td class="boxheaderl" colspan="2">Вариант 1222</td>
+					<td class="boxheaderr" colspan="1">Сухарева Софья, Р32131</td>
+				</tr>
+				<tr>
+					<td rowspan="4" align="center"> 
+						<img src="images/areas3.png" alt="The graph">
+					</td>
+					<td class="area"> 
+						<!--area here-->
+					</td>
+					<td>
+						Изменение X:
+							<div class="X-text" id="X">
+								<table class="x-select" id="x-select">
+									<tr>
+										<td>
+											<input type="button" class="x-button" id="x-4" name="x" value="-4">
+										</td>
+										<td>
+											<input type="button" class="x-button" id="x-3" name="x" value="-3">
+										</td>
+										<td>
+											<input type="button" class="x-button" id="x-2" name="x" value="-2">
+										</td>                                    
+									</tr>
+									<tr>
+										<td>
+											<input type="button" class="x-button" id="x-1" name="x" value="-1">
+										</td>
+										<td>
+											<input type="button" class="x-button" id="x0" name="x" value="0">
+										</td>
+										<td>
+											<input type="button" class="x-button" id="x1" name="x" value="1">
+										</td>
+									</tr>  
+									<tr>
+										<td>
+											<input type="button" class="x-button" id="x2" name="x" value="2">
+										</td>
+										<td>
+											<input type="button"  id="x3" name="x" value="3">
+										</td>
+										<td>
+											<input type="button"   id="x4" name="x" value="4">
+										</td>
+									</tr>
+								</table>
+							</div> 
+					</td>
+				</tr>
+				<tr>
+					<td class="area"> 
+						<!--area here-->
+					</td>
+					<td>Изменение Y:
+						<div class="Y-text" id="Y">
+							<input id="input-y" placeholder="(-3; 5)">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="area"> 
+						<!--area here-->
+					</td>
+					<td class="inputz">Изменение R:
+						<!-- checkbox -->
+						<form action="/action_page.php">
+							<input type="checkbox" id="r1" name="r1" value="1">
+							<label for="r1"> 1</label><br>
+							<input type="checkbox" id="r15" name="r15" value="1.5">
+							<label for="r15"> 1.5 </label><br>
+							<input type="checkbox" id="r2" name="r2" value="2">
+							<label for="r2"> 2</label><br>
+							<input type="checkbox" id="r25" name="r25" value="2.5">
+							<label for="r25"> 2.5</label><br>
+							<input type="checkbox" id="r3" name="r3" value="3">
+							<label for="r3"> 3</label><br>
+						</form> 
 
-        </td>
-        
-      </tr>
-      <tr>
-        <td class="area">
-          <!--area here-->
-        </td>
-        <td>
-          <button id="submit-button">Отправить</button>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <table id="check" class="table_check" align="center">
-            <tr class="table_header">
-              <th align="left">X</th>
-              <th align="left">Y</th>
-              <th align="left">R</th>
-              <th align="left">Результат</th>
-            </tr>
-          </table>
-        </td>
-        <td>
-          <div class="time_info">
-              <span>Текущее время: <span id="current_time"></span></span> <br>
-              <span>Время работы скрипта: <span id="working_time"></span></span> <br>
-          </div>
-        </td>
-      </tr>
-    </table>
+					</td>
+					
+				</tr>
+				<tr>
+					<td class="area">
+						<!--area here-->
+					</td>
+					<td>
+						<button id="submit-button">Отправить</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<table id="check" class="table_check" align="center">
+							<tr class="table_header">
+								<th align="left">X</th>
+								<th align="left">Y</th>
+								<th align="left">R</th>
+								<th align="left">Результат</th>
+							</tr>
+						</table>
+					</td>
+					<td>
+						<div class="time_info">
+								<span>Текущее время: <span id="current_time"></span></span> <br>
+								<span>Время работы скрипта: <span id="working_time"></span></span> <br>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</form>
   </body>
 </html>
