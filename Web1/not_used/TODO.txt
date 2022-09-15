@@ -1,5 +1,10 @@
 
+сделать форму из всей таблицы (https://developer.mozilla.org/ru/docs/Learn/Forms)
+JQUERY!!!!!
+https://www.internet-technologies.ru/articles/primery-validacii-form-s-pomoschyu-jquery.html
 
+в атрибуты формы добавить это?
+https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/input_event
 
 CSS:
 buttons: x-button css
