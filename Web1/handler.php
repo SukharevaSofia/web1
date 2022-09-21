@@ -1,52 +1,100 @@
 <?php
-    function make_json($array){
-        $json_string = 
-            "{" .
-                "\"x\":\"" . (string)$array[0] . "\"," .
-                "\"y\":\"" . (string)$array[1] . "\"," .
-                "\"R\":\"" . (string)$array[2] . "\"," .
-                "\"res\":\"" . $array[3] . "\"," .
-                "\"current_time\":\"" . (string)$array[4] . "\"," .
-                "\"working_time\":\"" . (string)$array[5] . "\"," .
-                "\"correct\":\"" . $array[6] . "\"" .
-            "}";
-        return $json_string;
-    }   
+    if (isset($_COOKIE["session"]))
+    {
+        define("session", $_COOKIE["session"]);
+    }
+    else
+    {
+        define("session", bin2hex(random_bytes(1024)));
+        setcookie("session", session, array('samesite' => 'Strict'));
+    }
+    
+    function operableInput($x, $y,  $R, $restore)
+    {
+        if ($x && $y && $R && (!$restore))
+        {
+            return true;
+        }
+        if ((!$x) && (!$y) && (!$R) && $restore)
+        {
+            return true;
+        }
+        return false;
+    }
+    if (!(isset($_GET['x']) && isset($_GET['y']) && isset($_GET['R'])) || isset($_GET['restore']))
+    {
+        exit("Неправильный ввод :(");
+    }
 
+    echo 'checked input';
     $time_enter = microtime(true);
 
     $x = $_GET['x'];
     $y = $_GET['y'];
     $R = $_GET['R'];
+    $restore = isset($_GET['restore']);
 
-    if (!(($y < 5 && $y >-3)
-        && ($x == 4 || $x == -4 || $x == -3
-        || $x == -2 || $x == -1 || $x == 0
-        || $x == 1 || $x == 2 || $x == 3)
-        && ($R == 1 || $R == 1.5 || $R == 2 || $R == 2.5
-        || $R == 3))){
-            $server_answer = make_json(array(
-                0, 0, 0, 0, 0, 0, "false"
-            ));
-            echo $server_answer;
-    }
-    else{
-        if ((abs($x) <= $R && abs($y)<= $R) && (($x >= 0 && $y <=0)
-            || ($x <= 0 && $y >= 0 && $x * $x + $y * $y <= ($R)*($R))
-            || ($x <= 0 && $y <= 0 && $x + $y >= -$R))){
-                $res = "Попадает";
+    echo 'database before';
+    $db = new SQLite3("/tmp/sukhareva.db");
+    $db->exec(
+    "CREATE TABLE IF NOT EXISTS"
+        . " web1table"
+        . "("
+        . "cookieID STRING"
+        . ", resultJson STRING"
+        . ")"
+    );
+    echo 'database after';
+    echo 'been here';
+    if ($restore == false)
+    {
+        echo 'been here too';
+            if (!(($y < 5 && $y >-3)
+            && ($x == 4 || $x == -4 || $x == -3
+            || $x == -2 || $x == -1 || $x == 0
+            || $x == 1 || $x == 2 || $x == 3)
+            && ($R == 1 || $R == 1.5 || $R == 2 || $R == 2.5
+            || $R == 3)))
+        {
+                $server_answer = json_encode(array("valid" => "false"));
+                echo $server_answer;
         }
-        else $res = "Не попадает";
+        else{
+            if ((abs($x) <= $R && abs($y)<= $R) && (($x >= 0 && $y <=0)
+                || ($x <= 0 && $y >= 0 && $x * $x + $y * $y <= ($R)*($R))
+                || ($x <= 0 && $y <= 0 && $x + $y >= -$R))){
+                    $res = "Попадает";
+            }
+            else $res = "Не попадает";
 
-        date_default_timezone_set('Europe/Moscow');
-        $current_time = date('h:i:s a', time());
-        $working_time = (10**6 * (microtime(true) - $time_enter));
+            date_default_timezone_set('Europe/Moscow');
+            $current_time = date('h:i:s a', time());
+            $working_time = (10**6 * (microtime(true) - $time_enter));
 
-        $server_answer = make_json(array(
-            $x, $y, $R, $res, $current_time, $working_time, "true"
-        ));
+            $stmtStore = $db->prepare(
+                "INSERT INTO"
+                  . " web1table(cookieID, resultJson)"
+                  . " VALUES"
+                  . " (:cookieID, :resultJson)"
+              );
+              $stmtStore->bindValue("cookieID", session, SQLITE3_TEXT);
+              $stmtStore->bindValue("resultJson", json_encode(array("x" => $x, "y" => $y,"R" => $R,"res" => $res,
+              "current_time" => $current_time, "working_time" => $working_time, "valid" => "true"), SQLITE3_TEXT));
+              $stmtStore->execute()->finalize();
 
-        echo $server_answer;
+            $server_answer = json_encode(array("x" => $x, "y" => $y,"R" => $R,"res" => $res,
+            "current_time" => $current_time, "working_time" => $working_time, "valid" => "true"));
+
+            echo $server_answer;
+        }
     }
-        
+    else
+    {
+        $stmtGet = $db->prepare(
+        "SELECT resultJson FROM web1table WHERE cookieID=:id"
+        );
+        $stmtGet->bindValue(":id", session, SQLITE3_TEXT);
+        echo $stmtGet->execute();
+    }
+          
 ?>
