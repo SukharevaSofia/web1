@@ -11,7 +11,7 @@
                 "\"correct\":\"" . $array[6] . "\"" .
             "}";
         return $json_string;
-    }
+    }   
 
     $time_enter = microtime(true);
 
