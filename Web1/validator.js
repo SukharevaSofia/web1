@@ -178,7 +178,7 @@ function sendRequest(r_handler) {
 /*-------Кнопка отправить--------*/
 
 function sendData() {
-    error_message = "";
+    error_message = "Неправильно введены данные";
     getData();
     console.log(x_value + ' ' + y_value + ' ' + r_value);
 
