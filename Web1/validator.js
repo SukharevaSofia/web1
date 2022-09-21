@@ -155,16 +155,19 @@ function updateTable(response) {
     var cell_R = document.createElement("td");
     var cell_hit = document.createElement("td");
     var cell_cur_time = document.createElement("td");
+    var cell_work_time = document.createElement("td")
     cell_x.innerHTML = response.x;
     cell_y.innerHTML = response.y;
     cell_R.innerHTML = response.R;
     cell_hit.innerHTML = response.res;
-    cell_cur_time.innerHTML = response.working_time;
+    cell_cur_time.innerHTML = response.current_time;
+    cell_work_time.innerHTML = response.working_time + ' мс'
     row.appendChild(cell_x);
     row.appendChild(cell_y);
     row.appendChild(cell_R);
     row.appendChild(cell_hit);
     row.appendChild(cell_cur_time);
+    row.appendChild(cell_work_time);
     tbody.appendChild(row);
 }
 
