@@ -1,38 +1,76 @@
 "use strict;"
-var inp_y = document.getElementById('input-y');
+const inp_y = document.getElementById('input-y');
 
-var inp_r1 = document.getElementById('r1');
-var inp_r15 = document.getElementById('r15');
-var inp_r2 = document.getElementById('r2');
-var inp_r25 = document.getElementById('r25');
-var inp_r3 = document.getElementById('r3');
+const inp_r1 = document.getElementById('r1');
+const inp_r15 = document.getElementById('r15');
+const inp_r2 = document.getElementById('r2');
+const inp_r25 = document.getElementById('r25');
+const inp_r3 = document.getElementById('r3');
 
-var submitButton = document.getElementById('submit-button');
-var current_time = document.getElementById('current_time');
-var working_time = document.getElementById('working_time');
-var table = document.getElementById('check');
-var tbody = table.getElementsByTagName('tbody')[0];
-var pred_btn = null;
+const submitButton = document.getElementById('submit-button');
+const current_time = document.getElementById('current_time');
+const working_time = document.getElementById('working_time');
+const table = document.getElementById('check');
+const tbody = table.getElementsByTagName('tbody')[0];
+const pred_btn = null;
+
 var error_message = "";
-
 var x_value = null;
 var y_value = null;
 var r_value = null;
+
+/*------------Определение выбранной кнопки-----------*/
+
+const btns = document.querySelectorAll('button[id^=x]')
+
+btns.forEach(btn => {
+
+    btn.addEventListener('click', event => {
+        x_value = event.target.value;
+        console.log(event.target.value);
+        event.target.classList.add("active_btn");
+        if (pred_btn == null) pred_btn = event.target;
+        else {
+            pred_btn.classList.remove("active_btn");
+            if (event.target == pred_btn){
+                pred_btn = null;
+                x_value = null;
+            }
+            else pred_btn = event.target;
+
+        }
+    });
+
+});
+
+/* достаем значения из Y и R */
+
+function getData() {
+
+    y_value = inp_y.value;
+    if (inp_r1.checked) {
+        r_value = inp_r1.value;
+    }
+    if (inp_r15.checked) {
+        r_value = inp_r15.value;
+    }
+    if (inp_r2.checked) {
+        r_value = inp_r2.value;
+    }
+    if (inp_r25.checked) {
+        r_value = inp_r25.value;
+    }
+    if (inp_r3.checked) {
+        r_value = inp_r3.value;
+    }
+}
 
 
 /*---------------Проверка данных--------------------*/
 
 function checkX() {
-    if (x_value != null) {
-        if (x_value == -4 || x_value == -3 || x_value == -2
-            || x_value == -1 || x_value == 0 || x_value == 1
-            || x_value == 2 || x_value == 3 || x_value == 4) {
-            return true;
-        }
-        else {
-            error_message = "X: Не выбрано значение.\n";
-            return false;
-        }
+    if (x_value != null) { 
+        return true;
     }
     else {
         error_message = "X: Не выбрано значение.\n";
@@ -88,26 +126,6 @@ function checkR() {
 
 }
 
-function getData() {
-
-    y_value = inp_y.value;
-    if (inp_r1.checked) {
-        r_value = inp_r1.value;
-    }
-    if (inp_r15.checked) {
-        r_value = inp_r15.value;
-    }
-    if (inp_r2.checked) {
-        r_value = inp_r2.value;
-    }
-    if (inp_r25.checked) {
-        r_value = inp_r25.value;
-    }
-    if (inp_r3.checked) {
-        r_value = inp_r3.value;
-    }
-}
-
 
 /*--------Функция обработки ответа-------*/
 
@@ -136,14 +154,17 @@ function updateTable(response) {
     var cell_y = document.createElement("td");
     var cell_R = document.createElement("td");
     var cell_hit = document.createElement("td");
+    var cell_cur_time = document.createElement("td");
     cell_x.innerHTML = response.x;
     cell_y.innerHTML = response.y;
     cell_R.innerHTML = response.R;
     cell_hit.innerHTML = response.res;
+    cell_cur_time.innerHTML = response.working_time;
     row.appendChild(cell_x);
     row.appendChild(cell_y);
     row.appendChild(cell_R);
     row.appendChild(cell_hit);
+    row.appendChild(cell_cur_time);
     tbody.appendChild(row);
 }
 
@@ -190,28 +211,3 @@ function sendData() {
 }
 
 submitButton.addEventListener('click', sendData);
-
-
-/*------------Определение выбранной кнопки-----------*/
-
-const btns = document.querySelectorAll('button[id^=x]')
-
-btns.forEach(btn => {
-
-    btn.addEventListener('click', event => {
-        x_value = event.target.value;
-        console.log(event.target.value);
-        event.target.classList.add("active_btn");
-        if (pred_btn == null) pred_btn = event.target;
-        else {
-            pred_btn.classList.remove("active_btn");
-            if (event.target == pred_btn) {
-                pred_btn = null;
-                x_value = null;
-            }
-            else pred_btn = event.target;
-
-        }
-    });
-
-});

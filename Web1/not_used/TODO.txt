@@ -1,20 +1,12 @@
 
-сделать форму из всей таблицы (https://developer.mozilla.org/ru/docs/Learn/Forms)
-JQUERY?
-https://www.internet-technologies.ru/articles/primery-validacii-form-s-pomoschyu-jquery.html
+Сделать так что бы кнопки отжимались :crying:
 
-в атрибуты формы добавить это?
-https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/input_event
 
 настроить отправку формы в javascript, а оттуда в слоника
-в слонике делать повторную валидацию значений
-хранить таблицу в сессии  (50 значений(мб пофиг вряд ли будет стресс-тест))
+в слонике делать повторную валидацию значений?
+хранить таблицу в сессии  (50 значений(мб пофиг вряд ли будет тест))
 
 
 CSS:
 buttons: x-button css
 
-what i want:
-    creating a form/several forms, validate them the moment user has finished inputing values
-    (buttons are sent the moment they are pressed; text as soon as ??? as typed???;
-    checkbox the moment it's picked prooooobably)
