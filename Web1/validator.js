@@ -14,6 +14,7 @@ const table = document.getElementById('check');
 const tbody = document.getElementById('results');
 var pred_btn = null;
 
+
 var error_message = "";
 var x_value = null;
 var y_value = null;
@@ -121,7 +122,7 @@ function checkR() {
 }
 
 
-/*--------Функция обработки ответа-------*/
+/*response manegment function*/
 
 var Handler = function (request) {
     console.log(request.responseText);
@@ -131,7 +132,7 @@ var Handler = function (request) {
         updateTime(response);
     }
     else {
-        alert("Неправильно введены данные 134 строка");
+        alert("Неправильно введены данные");
     }
 
 }
@@ -197,9 +198,7 @@ function sendRequest(r_handler) {
         + r_value;
 
     var request = new XMLHttpRequest();
-    if (!request) {
-        return;
-    }
+
 
     request.open("GET", r_path, true);
     request.responseType = 'text';

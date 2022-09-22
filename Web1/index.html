@@ -1,104 +1,106 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>✨🧼🥀👁️‍🗨️❤️‍🔥</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="icon" href="images/icon.png">
-    <script src="validator.js" defer></script>
-  </head>
 
-  
-  <body>
-		<table class="maintable" cellpadding="10" cellspacing="0" width="100%" >
-			<tr class="graphics">
-				<td class="boxheaderl" colspan="2">Вариант 1222</td>
-				<td class="boxheaderr" colspan="1">Сухарева Софья, Р32131</td>
-			</tr>
-			<tr>
-				<td rowspan="4" align="center"> 
-					<img src="images/areas3.png" alt="The graph">
-				</td>
-				<td class="area"> 
-					<!--area here-->
-				</td>
-				<td>
-					Изменение X:
-					<table class="x-select" id="x-select">
-						<tr>
-							<td><button class="x-button" id="x4" name="x" value="4"  >4</button></td>
-							<td><button class="x-button" id="x3" name="x" value="3"  >3</button></td>
-							<td><button class="x-button" id="x2" name="x" value="2"  >2</button></td>
-						</tr>
-						<tr>
-							<td><button class="x-button" id="x1" name="x" value="1" >1</button></td>
-							<td><button class="x-button" id="x0" name="x" value="0" >0</button></td>
-							<td><button class="x-button" id="x-1" name="x" value="-1" >-1</button></td>
-						</tr>
-						<tr>
-							<td><button class="x-button" id="x-2" name="x" value="-2"  >-2</button></td>
-							<td><button class="x-button" id="x-3" name="x" value="-3"  >-3</button></td>
-							<td><button class="x-button" id="x-4" name="x" value="-4"  >-4</button></td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td class="area"> 
-					<!--area here-->
-				</td>
-				<td>
-					<label for="input-y">Изменение Y:</label>
-					<div class="Y-text" id="Y">
-						<input id="input-y" placeholder="(-3; 5)">
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td class="area"> 
-					<!--area here-->
-				</td>
-				<td class="inputz">Изменение R:<br>
-					<!-- checkbox -->
-					<input type="checkbox" id="r1" name="r1" value="1">
-					<label for="r1"> 1</label><br>
-					<input type="checkbox" id="r15" name="r15" value="1.5">
-					<label for="r15"> 1.5 </label><br>
-					<input type="checkbox" id="r2" name="r2" value="2">
-					<label for="r2"> 2</label><br>
-					<input type="checkbox" id="r25" name="r25" value="2.5">
-					<label for="r25"> 2.5</label><br>
-					<input type="checkbox" id="r3" name="r3" value="3">
-					<label for="r3"> 3</label><br>
-				</td>
-				
-			</tr>
-			<tr>
-				<td class="area">
-					<!--area here-->
-				</td>
-				<td>
-					<button id="submit-button">Отправить</button>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<table id="check" class="table_check" align="center">
-						<tr class="table_header">
-							<th align="left">X</th>
-							<th align="left">Y</th>
-							<th align="left">R</th>
-							<th align="left">Результат</th>
-							<th align="left">Текущее время</th>
-							<th align="left">работа скрипта</th>
-						</tr>
-						<tbody id="results"></tbody>
-					</table>
-				</td>
-				<td width="30%">
-					
-				</td>
-			</tr>
-		</table>
-  </body>
+<head>
+	<meta charset="utf-8">
+	<title>✨🧼🥀👁️‍🗨️❤️‍🔥</title>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="icon" href="images/icon.png">
+	<script src="validator.js" defer></script>
+</head>
+
+
+<body>
+	<table class="maintable" cellpadding="10" cellspacing="0" width="100%">
+		<tr class="graphics">
+			<td class="boxheaderl" colspan="2">Вариант 1222</td>
+			<td class="boxheaderr" colspan="1">Сухарева Софья, Р32131</td>
+		</tr>
+		<tr>
+			<td rowspan="4" align="center">
+				<img src="images/areas3.png" alt="The graph">
+			</td>
+			<td class="area">
+				<!--area here-->
+			</td>
+			<td>
+				Изменение X:
+				<table class="x-select" id="x-select">
+					<tr>
+						<td><button class="x-button" id="x4" name="x" value="4">4</button></td>
+						<td><button class="x-button" id="x3" name="x" value="3">3</button></td>
+						<td><button class="x-button" id="x2" name="x" value="2">2</button></td>
+					</tr>
+					<tr>
+						<td><button class="x-button" id="x1" name="x" value="1">1</button></td>
+						<td><button class="x-button" id="x0" name="x" value="0">0</button></td>
+						<td><button class="x-button" id="x-1" name="x" value="-1">-1</button></td>
+					</tr>
+					<tr>
+						<td><button class="x-button" id="x-2" name="x" value="-2">-2</button></td>
+						<td><button class="x-button" id="x-3" name="x" value="-3">-3</button></td>
+						<td><button class="x-button" id="x-4" name="x" value="-4">-4</button></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td class="area">
+				<!--area here-->
+			</td>
+			<td>
+				<label for="input-y">Изменение Y:</label>
+				<div class="Y-text" id="Y">
+					<input id="input-y" placeholder="(-3; 5)">
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="area">
+				<!--area here-->
+			</td>
+			<td class="inputz">Изменение R:<br>
+				<!-- checkbox -->
+				<input type="checkbox" id="r1" name="r1" value="1">
+				<label for="r1"> 1</label><br>
+				<input type="checkbox" id="r15" name="r15" value="1.5">
+				<label for="r15"> 1.5 </label><br>
+				<input type="checkbox" id="r2" name="r2" value="2">
+				<label for="r2"> 2</label><br>
+				<input type="checkbox" id="r25" name="r25" value="2.5">
+				<label for="r25"> 2.5</label><br>
+				<input type="checkbox" id="r3" name="r3" value="3">
+				<label for="r3"> 3</label><br>
+			</td>
+
+		</tr>
+		<tr>
+			<td class="area">
+				<!--area here-->
+			</td>
+			<td>
+				<button id="submit-button">Отправить</button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<table id="check" class="table_check" align="center">
+					<tr class="table_header">
+						<th align="left">X</th>
+						<th align="left">Y</th>
+						<th align="left">R</th>
+						<th align="left">Результат</th>
+						<th align="left">Текущее время</th>
+						<th align="left">работа скрипта</th>
+					</tr>
+					<tbody id="results"></tbody>
+				</table>
+			</td>
+			<td width="30%">
+
+			</td>
+		</tr>
+	</table>
+</body>
+
 </html>

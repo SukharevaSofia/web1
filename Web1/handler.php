@@ -42,11 +42,29 @@
         . ")"
     );
 
+
+    function checkInput(string $number)
+    {
+    if (!is_numeric($number))
+    {
+        exit(json_encode(["valid" => false]));
+    }
+    if (!ctype_digit($number))
+    {
+        if ((float)$number !== (float)(round($number*1000) / 1000))
+        {
+            exit(json_encode(["valid" => false]));
+        }
+    }
+    return (float)$number;
+    }
+
+    
     if ($restore == false)
     {
-        $x = $_GET['x'];
-        $y = $_GET['y'];
-        $R = $_GET['R'];
+        $x = checkInput($_GET['x']);
+        $y = checkInput($_GET['y']);
+        $R = checkInput($_GET['R']);
             if (!(($y < 5 && $y >-3)
             && ($x == 4 || $x == -4 || $x == -3
             || $x == -2 || $x == -1 || $x == 0
