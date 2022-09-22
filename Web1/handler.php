@@ -1,4 +1,5 @@
 <?php
+    //saving users' sessions
     if (isset($_COOKIE["session"]))
     {
         define("session", $_COOKIE["session"]);
@@ -21,12 +22,13 @@
         }
         return false;
     }
-    if (!(isset($_GET['x']) && isset($_GET['y']) && isset($_GET['R'])) || isset($_GET['restore']))
+
+    if (!operableInput(isset($_GET['x']), isset($_GET['y']), isset($_GET['R']), isset($_GET['restore'])))
     {
         exit("Неправильный ввод :(");
     }
 
-    echo 'checked input';
+    
     $time_enter = microtime(true);
 
     $x = $_GET['x'];
@@ -34,7 +36,7 @@
     $R = $_GET['R'];
     $restore = isset($_GET['restore']);
 
-    echo 'database before';
+
     $db = new SQLite3("/tmp/sukhareva.db");
     $db->exec(
     "CREATE TABLE IF NOT EXISTS"
@@ -44,11 +46,10 @@
         . ", resultJson STRING"
         . ")"
     );
-    echo 'database after';
-    echo 'been here';
+
+
     if ($restore == false)
     {
-        echo 'been here too';
             if (!(($y < 5 && $y >-3)
             && ($x == 4 || $x == -4 || $x == -3
             || $x == -2 || $x == -1 || $x == 0
@@ -94,7 +95,13 @@
         "SELECT resultJson FROM web1table WHERE cookieID=:id"
         );
         $stmtGet->bindValue(":id", session, SQLITE3_TEXT);
-        echo $stmtGet->execute();
+        $result = $stmtGet->execute();
+        $response = [];
+        while ($row = $result->fetchArray())
+        {
+        array_push($response, $row['resultJson']);
+        }
+        echo json_encode($response);
     }
           
 ?>

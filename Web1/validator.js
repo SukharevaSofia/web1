@@ -12,7 +12,7 @@ const current_time = document.getElementById('current_time');
 const working_time = document.getElementById('working_time');
 const table = document.getElementById('check');
 const tbody = table.getElementsByTagName('tbody')[0];
-const pred_btn = null;
+var pred_btn = null;
 
 var error_message = "";
 var x_value = null;
@@ -178,7 +178,8 @@ function sendRequest(r_handler) {
     var r_path = 'handler.php?x='
         + x_value + '&y='
         + y_value + '&R='
-        + r_value;
+        + r_value + '&restore='
+        + restore;
 
     var request = new XMLHttpRequest();
     if (!request) {
@@ -206,11 +207,14 @@ function sendData() {
     getData();
     console.log(x_value + ' ' + y_value + ' ' + r_value);
 
-    var check1 = checkX();
-    var check2 = checkY();
-    var check3 = checkR();
-    if (check1 && check2 && check3) sendRequest(Handler);
-    else alert(error_message);
+    if (checkX() && checkY() && checkR())
+    {
+        sendRequest(Handler);
+    }
+    else 
+    {
+        alert(error_message);
+    }
 }
 
 submitButton.addEventListener('click', sendData);
