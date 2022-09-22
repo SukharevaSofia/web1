@@ -173,11 +173,17 @@ function updateTable(response) {
     var cell_hit = document.createElement("td");
     var cell_cur_time = document.createElement("td");
     var cell_work_time = document.createElement("td")
+
+    date = new Date();
+    Hour = date.getHours();
+    Minutes = date.getMinutes();
+    Seconds = date.getSeconds();
+
     cell_x.innerHTML = response.x;
     cell_y.innerHTML = response.y;
     cell_R.innerHTML = response.R;
     cell_hit.innerHTML = response.res ? "Попадание" : "Нет попадания";
-    cell_cur_time.innerHTML = response.current_time;
+    cell_cur_time.innerHTML =  Hour + ":" + Minutes + ":" + Seconds;
     cell_work_time.innerHTML = response.working_time + ' нс'
     row.appendChild(cell_x);
     row.appendChild(cell_y);
