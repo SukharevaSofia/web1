@@ -1,4 +1,6 @@
 <?php
+    $time_enter = hrtime(true);
+
     //saving users' sessions
     if (isset($_COOKIE["session"]))
     {
@@ -27,15 +29,8 @@
     {
         exit("Неправильный ввод :(");
     }
-
     
-    $time_enter = microtime(true);
-
-    $x = $_GET['x'];
-    $y = $_GET['y'];
-    $R = $_GET['R'];
     $restore = isset($_GET['restore']);
-
 
     $db = new SQLite3("/tmp/sukhareva.db");
     $db->exec(
@@ -47,9 +42,11 @@
         . ")"
     );
 
-
     if ($restore == false)
     {
+        $x = $_GET['x'];
+        $y = $_GET['y'];
+        $R = $_GET['R'];
             if (!(($y < 5 && $y >-3)
             && ($x == 4 || $x == -4 || $x == -3
             || $x == -2 || $x == -1 || $x == 0
@@ -64,13 +61,13 @@
             if ((abs($x) <= $R && abs($y)<= $R) && (($x >= 0 && $y <=0)
                 || ($x <= 0 && $y >= 0 && $x * $x + $y * $y <= ($R)*($R))
                 || ($x <= 0 && $y <= 0 && $x + $y >= -$R))){
-                    $res = "Попадает";
+                    $res = true;
             }
-            else $res = "Не попадает";
+            else $res = false;
 
             date_default_timezone_set('Europe/Moscow');
             $current_time = date('h:i:s a', time());
-            $working_time = (10**6 * (microtime(true) - $time_enter));
+            $working_time = (int)((hrtime(true) - $time_enter) / 1000);
 
             $stmtStore = $db->prepare(
                 "INSERT INTO"
