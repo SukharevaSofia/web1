@@ -1,9 +1,14 @@
 * {
     font-family: sans-serif;   
+    
 }
 
 body{
     background-color: rgb(249, 234, 225)
+}
+
+.x-button{
+
 }
 
 .active_btn {
@@ -19,7 +24,7 @@ table.table_check   {
     color: rgb(255, 255, 255);
 }
 
-td.boxheaderr { /* вариант, фио и прочее */ 
+td.boxheaderr { 
 
     text-align:right;
     font-family: sans-serif;
@@ -39,6 +44,8 @@ td.boxheaderl {
     background-color: rgb(101, 50, 57);
     color: rgb(255, 255, 255);
    }
+
+
 
 td.area{
     width: 1%;

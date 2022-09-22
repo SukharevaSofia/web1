@@ -175,7 +175,7 @@ function updateTable(response) {
     cell_x.innerHTML = response.x;
     cell_y.innerHTML = response.y;
     cell_R.innerHTML = response.R;
-    cell_hit.innerHTML = response.res ? "Попал" : "Не попал";
+    cell_hit.innerHTML = response.res ? "Попадание" : "Нет попадания";
     cell_cur_time.innerHTML = response.current_time;
     cell_work_time.innerHTML = response.working_time + ' нс'
     row.appendChild(cell_x);
