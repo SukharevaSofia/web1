@@ -83,8 +83,7 @@
             }
             else $res = false;
 
-            date_default_timezone_set('Europe/Moscow');
-            $current_time = date('h:i:s a', time());
+            
             $working_time = (int)((hrtime(true) - $time_enter) / 1000);
 
             $stmtStore = $db->prepare(
@@ -95,11 +94,11 @@
               );
               $stmtStore->bindValue("cookieID", session, SQLITE3_TEXT);
               $stmtStore->bindValue("resultJson", json_encode(array("x" => $x, "y" => $y,"R" => $R,"res" => $res,
-              "current_time" => $current_time, "working_time" => $working_time, "valid" => "true"), SQLITE3_TEXT));
+              "working_time" => $working_time, "valid" => "true"), SQLITE3_TEXT));
               $stmtStore->execute()->finalize();
 
             $server_answer = json_encode(array("x" => $x, "y" => $y,"R" => $R,"res" => $res,
-            "current_time" => $current_time, "working_time" => $working_time, "valid" => "true"));
+             "working_time" => $working_time, "valid" => "true"));
 
             echo $server_answer;
         }
