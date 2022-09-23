@@ -82,8 +82,9 @@
                     $res = true;
             }
             else $res = false;
-
             
+            $dateTime = new DateTime();
+            $current_time = $dateTime->getTimestamp();
             $working_time = (int)((hrtime(true) - $time_enter) / 1000);
 
             $stmtStore = $db->prepare(
@@ -94,11 +95,11 @@
               );
               $stmtStore->bindValue("cookieID", session, SQLITE3_TEXT);
               $stmtStore->bindValue("resultJson", json_encode(array("x" => $x, "y" => $y,"R" => $R,"res" => $res,
-              "working_time" => $working_time, "valid" => "true"), SQLITE3_TEXT));
+              "current_time" => $current_time, "working_time" => $working_time, "valid" => "true"), SQLITE3_TEXT));
               $stmtStore->execute()->finalize();
 
             $server_answer = json_encode(array("x" => $x, "y" => $y,"R" => $R,"res" => $res,
-             "working_time" => $working_time, "valid" => "true"));
+            "current_time" => $current_time, "working_time" => $working_time, "valid" => "true"));
 
             echo $server_answer;
         }

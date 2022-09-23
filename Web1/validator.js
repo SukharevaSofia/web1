@@ -129,7 +129,7 @@ var Handler = function (request) {
     var response = JSON.parse(request.responseText);
     if (response.valid == "true") {
         updateTable(response);
-        updateTime(response);
+        //updateTime(response);
     }
     else {
         alert("Неправильно введены данные");
@@ -174,16 +174,18 @@ function updateTable(response) {
     var cell_cur_time = document.createElement("td");
     var cell_work_time = document.createElement("td")
 
-    date = new Date();
-    Hour = date.getHours();
-    Minutes = date.getMinutes();
-    Seconds = date.getSeconds();
-
     cell_x.innerHTML = response.x;
     cell_y.innerHTML = response.y;
     cell_R.innerHTML = response.R;
     cell_hit.innerHTML = response.res ? "Попадание" : "Нет попадания";
-    cell_cur_time.innerHTML =  Hour + ":" + Minutes + ":" + Seconds;
+    
+    datems = (response.current_time * 1000);
+    obj = new Date(response.current_time * 1000)
+    hours = obj.getHours();
+    mins = obj.getMinutes();
+    sec = obj.getSeconds();
+    cell_cur_time.innerHTML =  hours + ":" + mins + ":" + sec;
+    //cell_cur_time.innerHTML =  Date((response.current_time - ((Number((new Date().getTimezoneOffset()))) * 60)) * 1000);
     cell_work_time.innerHTML = response.working_time + ' нс'
     row.appendChild(cell_x);
     row.appendChild(cell_y);
